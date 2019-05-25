@@ -3,6 +3,7 @@ import React from 'react';
 export class TodoHeader extends React.Component<any, any> {
   constructor(props) {
     super(props);
+    // This state variable holds the input's value
     this.state = { labelInput: '' };
   }
 
@@ -10,6 +11,8 @@ export class TodoHeader extends React.Component<any, any> {
     const { filter } = this.props;
 
     return (
+      // The filter value is used to conditionally add a class
+      // Now, the <input> is a controlled value
       <header>
         <h1>todos <small>(1.6 exercise)</small></h1>
         <div className="addTodo">
@@ -24,6 +27,9 @@ export class TodoHeader extends React.Component<any, any> {
       </header>
     );
   }
+
+  // Updates the label's input value
+  // This changes our text field from uncontrolled to controlled input
   _onChange = evt => {
     this.setState({ labelInput: evt.target.value });
   };

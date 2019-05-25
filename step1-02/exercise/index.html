@@ -10,19 +10,40 @@
       data-default-tab="html,result"
     >
       <pre data-lang="css">
-/* 1. */
+      /* 1. */
+      h2 {
+        color: red;
+      }
 
-/* 2. */
+      /* 2. */
+      h2 + div {
+        color: green;
+      }
 
-/* 3. */
+      /* 3. */
+      .myList li {
+        border: 1px solid green;
+      }
 
-/* 4. */
+      /* 4. */
+      .myClass {
+        background-color: green;
+      }
 
-/* 5. */
+      /* 5. */
+      .myClass.otherClass {
+        color: white;
+      }
 
-/* 6. */
+      /* 6. */
+      #myId {
+        color: yellow;
+      }
 
-/* Bonus */
+      /* Bonus */
+      section > div:last-child {
+        border: 1px solid pink;
+      }
       </pre>
       <pre data-lang="html">
 &lt;!-- Without changing the HTML markup, apply the styles asked for in the markup. Do not apply styles that a tag doesn't ask for. -->

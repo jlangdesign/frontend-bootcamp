@@ -10,6 +10,8 @@ export class TodoList extends React.Component<any, any> {
       return filter === 'all' || (filter === 'completed' && todos[id].completed) || (filter === 'active' && !todos[id].completed);
     });
     return (
+      // todos[id] returns the todo matching the id passed in
+      // Spread operator (...) means: label={todos[id].label} completed={todos[id].completed}
       <ul className="todos">
         {filteredTodos.map(id => (
           <TodoListItem key={id} id={id} {...todos[id]} />

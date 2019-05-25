@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 /**
- * Represents a todo list item in our todo app.
+ * Represents a list item in our todo app.
  */
 export class TodoListItem extends React.Component<any, any> {
   render() {

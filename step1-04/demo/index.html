@@ -13,7 +13,7 @@
     <pre data-lang="html">
 &lt;script src="https://unpkg.com/react@16/umd/react.development.js">&lt;/script>
 &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">&lt;/script>
-          
+
 &lt;div id='app'>&lt;/div>
     </pre>
     <pre data-lang="css">
@@ -22,12 +22,94 @@
 }
     </pre>
     <pre data-lang="javascript">
+// Tracks how many times counter button is clicked
+class Counter extends React.Component {
+  // Constructs (adds state)
+  constructor(props) {
+    // Call parent constructor (Component)
+    super(props);
+    this.state = {
+      clicks: 0
+    };
+  }
+
+  // Renders
+  render() {
+    const {text} = this.props;
+    const {clicks} = this.state;
+    return (
+      <div>
+      	{text}: {clicks}
+  			<button onClick={this._onButtonClick}>Click</button>
+			</div>
+		)
+	}
+
+  // Increments counter on click
+  // (Private method/property indicated with underscore)
+  _onButtonClick = () => {
+    this.setState({
+      clicks: this.state.clicks + 1
+    });
+  };
+}
+
+const App = props => {
+  return <Counter text="chickens" />;
+};
+
+// Renders a DOM element
+// The first param is JSX, not HTML
+// 'class' is a reserved word in JS, so you have to use 'className' instead
+// Can only return single element - multiple elements need to be wrapped in a div
 ReactDOM.render(
-  &lt;div>Hello World&lt;/div>, 
+  <App />,
   document.getElementById('app')
 );
+
+
+
+
+// The component can take in additional props using the same syntax as an attribute
+// Can be accessed inside via props.text in function component or this.props.text in a class component
+// Props allow component to be more reusable - can create multiple instances of same component with diff props
+
+// Two ways to create a React component
+// A component returns a portion of your app
+// It could be HTML, CSS, and JS
+
+// Method 1: Use a JS class that extends React.Component (which contains render())
+/*
+class App extends React.Component {
+  render() {
+    const {
+      open,
+      text,
+      count,
+      items,
+      config: { start, end }
+  	} = this.props;
+
+    return <p>Hello World</p>;
+  }
+}
+*/
+
+// Method 2: Write as function
+/*
+const App = props => {
+  return <p>Hello World</p>;
+};
+
+const App = props => {
+  return <p>{props.text}</p>;
+};
+
+const App = props => {
+  return <p>{props.text ? props.text : 'oops!'}</p>;
+};
+*/
       </pre>
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
   </body>
 </html>
-

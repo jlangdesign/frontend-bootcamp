@@ -4,6 +4,7 @@ import { TodoHeader } from './components/TodoHeader';
 import { TodoList } from './components/TodoList';
 
 export class TodoApp extends React.Component<any, any> {
+  // Add state (two keys: todos and filter)
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +29,9 @@ export class TodoApp extends React.Component<any, any> {
       filter: 'all'
     };
   }
+
   render() {
+    // Pass state (filter and todos) into components
     const { filter, todos = [] } = this.state;
     return (
       <div>
