@@ -4,11 +4,9 @@ import { FilterTypes } from '../store';
 import { actions } from '../actions';
 import { connect } from 'react-redux';
 
-// TODO: these ?'s after the keys of an interface makes it optional
-// and can be removed when you finished connecting this component
 interface TodoHeaderProps {
-  addTodo?: (label: string) => void;
-  setFilter?: (filter: FilterTypes) => void;
+  addTodo: (label: string) => void;
+  setFilter: (filter: FilterTypes) => void;
 }
 
 interface TodoHeaderState {
@@ -69,18 +67,12 @@ class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState> {
   };
 }
 
-// TODO: write out the mapping functions for state and dispatch functions
-/*
-  HINT: you can get started by copy pasting below code as arguments to connect()
-
-  (state: Store) => ({
-    // TODO: mapping for state
-    // HINT: look at what the component needed from the props interface
-  }),
+const ConnectedTodoHeader = connect(
+  state => ({}),
   dispatch => ({
-    // TODO: mapping for dispatch actions
-    // HINT: look at what the component needed from the props interface
+    addTodo: label => dispatch(actions.addTodo(label)),
+    setFilter: filter => dispatch(actions.setFilter(filter)),
   })
-*/
-const ConnectedTodoHeader = connect()(TodoHeader);
+)(TodoHeader);
+
 export { ConnectedTodoHeader as TodoHeader };

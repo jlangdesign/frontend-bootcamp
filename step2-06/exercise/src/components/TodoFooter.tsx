@@ -4,11 +4,9 @@ import { actions } from '../actions';
 import { connect } from 'react-redux';
 import { Store } from '../store';
 
-// TODO: these ?'s after the keys of an interface makes it optional
-// and can be removed when you finished connecting this component
 interface TodoFooterProps {
-  todos?: Store['todos'];
-  clear?: () => void;
+  todos: Store['todos'];
+  clear: () => void;
 }
 
 const TodoFooter = (props: TodoFooterProps) => {
@@ -26,18 +24,19 @@ const TodoFooter = (props: TodoFooterProps) => {
   );
 };
 
-// TODO: write out the mapping functions for state and dispatch functions
-/*
-  HINT: you can get started by copy pasting below code as arguments to connect()
-
+// connect() maps portions of state tree and dispatch functions into props for
+// the child React component
+// It also returns a function, which is called to decorate TodoFooter into a
+// ConnectedTodoFooter
+// Basically, connect() takes in functions as arguments and returns a function
+// that takes in a component and returns a component
+const ConnectedTodoFooter = connect(
+  // Mapping functions for state and dispatch functions
   (state: Store) => ({
-    // TODO: mapping for state
-    // HINT: look at what the component needed from the props interface
+    todos: state.todos
   }),
   dispatch => ({
-    // TODO: mapping for dispatch actions
-    // HINT: look at what the component needed from the props interface
+    clear: () => dispatch(actions.clear())
   })
-*/
-const ConnectedTodoFooter = connect()(TodoFooter);
+)(TodoFooter);
 export { ConnectedTodoFooter as TodoFooter };

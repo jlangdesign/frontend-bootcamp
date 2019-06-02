@@ -1,5 +1,6 @@
 import React from 'react';
 import { Store } from '../store';
+import { DefaultButton, Stack, Text } from 'office-ui-fabric-react';
 
 // TODO: import DefaultButton, Stack, and Text
 
@@ -17,13 +18,13 @@ export const TodoFooter = (props: TodoFooterProps) => {
   // 3. replace the <button> with Fabric control <DefaultButton>
 
   return (
-    <footer>
-      <span>
+    <Stack>
+      <Text>
         {itemCount} item{itemCount <= 1 ? '' : 's'} left
-      </span>
-      <button onClick={() => props.clear()} className="button">
+      </Text>
+      <DefaultButton onClick={() => props.clear()} className="button">
         Clear Completed
-      </button>
-    </footer>
+      </DefaultButton>
+    </Stack>
   );
 };
